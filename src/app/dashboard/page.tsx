@@ -10,7 +10,7 @@ export default function DashboardPage() {
           Dashboard
         </h1>
         <p className="mt-1 text-muted-foreground">
-          Welcome back! Upload a new document or review a past study session.
+          Welcome back! Upload a new document or review a past study sessions.
         </p>
       </header>
 
