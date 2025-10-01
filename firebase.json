@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "source": "rehnuma-ai",
+      "codebase": "default",
+      "runtime": "nodejs18",
+      "region": "asia-south1"
+    }
+  }
