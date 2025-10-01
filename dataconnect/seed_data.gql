@@ -1,0 +1,108 @@
+mutation SeedData @auth(level: USER) {
+  user_upsertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "bobuser",
+      email: "bob@example.com",
+      createdAt: "2024-01-01T00:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "aliceuser",
+      email: "alice@example.com",
+      createdAt: "2024-01-02T00:00:00Z"
+    }
+  ])
+  resource_upsertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      title: "Sample Resource 1",
+      fileType: "pdf",
+      fileUrl: "http://example.com/resource1.pdf",
+      createdAt: "2024-01-03T00:00:00Z"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      title: "Sample Resource 2",
+      fileType: "txt",
+      fileUrl: "http://example.com/resource2.txt",
+      createdAt: "2024-01-04T00:00:00Z"
+    }
+  ])
+  studySession_upsertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440000",
+      resourceId: "650e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      title: "Sample Study Session 1",
+      status: "active",
+      createdAt: "2024-01-05T00:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440001",
+      resourceId: "650e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      title: "Sample Study Session 2",
+      status: "completed",
+      createdAt: "2024-01-06T00:00:00Z"
+    }
+  ])
+  question_upsertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440000",
+      studySessionId: "750e8400-e29b-41d4-a716-446655440000",
+      questionText: "What is 1+1?",
+      answerText: "2",
+      difficulty: "easy",
+      order: 1
+    },
+    {
+      id: "850e8400-e29b-41d4-a716-446655440001",
+      studySessionId: "750e8400-e29b-41d4-a716-446655440001",
+      questionText: "What is the capital of France?",
+      answerText: "Paris",
+      difficulty: "medium",
+      order: 1
+    }
+  ])
+    explanation_upsertMany(data: [
+    {
+      id: "950e8400-e29b-41d4-a716-446655440000",
+      studySessionId: "750e8400-e29b-41d4-a716-446655440000",
+      explanationText: "Because 1+1=2",
+      language: "english",
+      order: 1,
+      originalTextSnippet: "From the document"
+    },
+    {
+       id: "950e8400-e29b-41d4-a716-446655440001",
+      studySessionId: "750e8400-e29b-41d4-a716-446655440001",
+      explanationText: "Paris is the capital",
+      language: "english",
+      order: 1,
+      originalTextSnippet: "From the document"
+    }
+  ])
+   progress_upsertMany(data: [
+    {
+      id: "a50e8400-e29b-41d4-a716-446655440000",
+      questionId: "850e8400-e29b-41d4-a716-446655440000",
+      studySessionId: "750e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      attemptedAt: "2024-01-07T00:00:00Z",
+      isCorrect: true,
+      studentAnswer: "2"
+    },
+    {
+      id: "a50e8400-e29b-41d4-a716-446655440001",
+      questionId: "850e8400-e29b-41d4-a716-446655440001",
+      studySessionId: "750e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      attemptedAt: "2024-01-08T00:00:00Z",
+      isCorrect: true,
+      studentAnswer: "Paris"
+    }
+  ])
+}

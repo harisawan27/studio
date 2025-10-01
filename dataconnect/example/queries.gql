@@ -1,0 +1,34 @@
+mutation CreateStudySession @auth(level: USER) {
+  studySession_insert(
+    data: {
+      title: "New Study Session"
+      status: "active"
+      createdAt_expr: "request.time"
+    }
+  )
+}
+
+query ListStudySessions @auth(level: USER) {
+  studySessions {
+    id
+    title
+    status
+    createdAt
+  }
+}
+
+mutation UpdateQuestion($id: UUID!, $answerText: String) @auth(level: USER) {
+  question_update(
+    key: { id: $id }
+    data: { answerText: $answerText }
+  )
+}
+
+query ListResourcesForUser @auth(level: USER) {
+  resources(where: { userId_expr: "auth.uid" }) {
+    id
+    title
+    description
+    fileUrl
+  }
+}
