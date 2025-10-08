@@ -51,3 +51,9 @@ firestore-debug.log
 .next
 .firebase
 .cache
+
+functions/node_modules
+functions/.next
+functions/.cache
+functions/.vercel
+functions/.firebase
