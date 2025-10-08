@@ -1,0 +1,51 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  preferredLanguage: String
+}
+
+type Resource @table {
+  user: User
+  title: String!
+  fileUrl: String!
+  fileType: String!
+  createdAt: Timestamp!
+  description: String
+  originalTextContent: String
+}
+
+type StudySession @table {
+  user: User
+  resource: Resource
+  title: String!
+  createdAt: Timestamp!
+  status: String!
+  language: String
+}
+
+type Explanation @table {
+  studySession: StudySession
+  originalTextSnippet: String!
+  explanationText: String!
+  language: String!
+  order: Int!
+}
+
+type Question @table {
+  studySession: StudySession
+  questionText: String!
+  answerText: String!
+  difficulty: String!
+  order: Int!
+}
+
+type Progress @table {
+  user: User
+  studySession: StudySession
+  question: Question
+  isCorrect: Boolean!
+  attemptedAt: Timestamp!
+  studentAnswer: String
+}
